@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>THE ENSHRINE STORE — Gifts for Brighter Days</title>
+<meta name="description" content="The Enshrine Store — personalised lamps, keychains, frames, desk objects, OLED companions and 3D printed decor.">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap');
+:root{
+  --bg:#fbf8ff;--surface:#ffffff;--soft:#eee7ff;--text:#2b1d3d;
+  --muted:#776b86;--accent:#8b5cf6;--accent2:#cbb7ff;--line:#e5dcf3;
+  --shadow:0 24px 70px rgba(92,54,140,.15);
+  --p:#6f46c7; --p2:#8a63d2; --p3:#a88ce0; --ink:#241b32;
+  --lav:#f3effa; --lav2:#e9e0f7; --white:#fff;
+}
+body.male{
+  --bg:#f5f0ff;--surface:#ffffff;--soft:#e6dcff;--text:#2f2148;
+  --muted:#75658c;--accent:#7c3aed;--accent2:#bda5ff;--line:#ddd0f0;
+  --shadow:0 24px 70px rgba(86,49,137,.16);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font-family:"DM Sans",system-ui,sans-serif;transition:background .5s,color .5s}
+a{text-decoration:none;color:inherit}
+button,input,select,textarea{font:inherit}
+.wrap{width:min(1180px,92%);margin:auto}
+
+/* NAV */
+nav{
+  height:80px;position:sticky;top:0;z-index:20;border-bottom:1px solid var(--line);
+  background:color-mix(in srgb,var(--bg) 86%,transparent);backdrop-filter:blur(18px)
+}
+.navinner{height:100%;display:flex;align-items:center;justify-content:space-between}
+.logo{font-size:32px;font-weight:1000;letter-spacing:-.09em}
+.logo span{color:var(--accent)}
+.navlinks{display:flex;gap:28px;color:var(--muted);font-size:14px;font-weight:800}
+.navlinks a:hover{color:var(--accent)}
+.theme{
+  display:flex;align-items:center;gap:9px;border:1px solid var(--line);background:var(--surface);
+  color:var(--text);border-radius:999px;padding:7px 12px;cursor:pointer;font-weight:900
+}
+.switch{width:42px;height:23px;border-radius:99px;background:var(--accent2);padding:3px}
+.switch i{display:block;width:17px;height:17px;border-radius:50%;background:white;transition:.35s}
+body.male .switch i{transform:translateX(19px)}
+
+/* HERO */
+.hero{min-height:720px;display:grid;grid-template-columns:1fr 1fr;gap:55px;align-items:center;padding:75px 0}
+.badge{display:inline-block;padding:8px 13px;border-radius:99px;background:var(--soft);color:var(--accent);font-size:11px;font-weight:1000;text-transform:uppercase;letter-spacing:.12em}
+h1{font:600 clamp(48px,7vw,86px)/.95 "Playfair Display",serif;letter-spacing:-.045em;margin:22px 0}
+.hero p{max-width:560px;font-size:18px;line-height:1.65;color:var(--muted)}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:30px}
+.btn{border:0;border-radius:99px;padding:15px 22px;font-weight:950;cursor:pointer;transition:.2s}
+.btn:hover{transform:translateY(-3px)}
+.primary{background:var(--text);color:var(--bg)}
+.secondary{background:var(--surface);color:var(--text);border:1px solid var(--line)}
+.btn.soft{background:var(--lav);color:var(--p)}
+
+.heroart{
+  height:540px;border-radius:48px;background:var(--soft);position:relative;overflow:hidden;
+  box-shadow:var(--shadow)
+}
+.glow{position:absolute;width:460px;height:460px;border-radius:50%;background:var(--accent2);opacity:.48;left:45px;top:45px}
+.glow2{position:absolute;width:250px;height:250px;border-radius:45%;background:var(--accent);opacity:.38;right:0;bottom:0;transform:rotate(25deg)}
+
+.mascotSheet{
+  position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+  width:92%;height:92%;object-fit:contain;z-index:3;
+  filter:drop-shadow(0 25px 35px rgba(50,70,90,.15));
+  transition:transform .5s ease,filter .5s ease;
+}
+.heroart:hover .mascotSheet{transform:translate(-50%,-50%) scale(1.025)}
+
+.bot{
+  position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+  width:235px;height:235px;border-radius:66px;background:var(--surface);
+  box-shadow:0 35px 75px #0003;display:grid;place-items:center
+}
+.face{width:148px;height:72px;border-radius:25px;background:#111;display:flex;gap:20px;align-items:center;justify-content:center}
+.eye{width:23px;height:32px;background:white;border-radius:8px}
+.smile{position:absolute;width:36px;height:14px;border-bottom:4px solid white;border-radius:0 0 25px 25px;margin-top:43px}
+.float{position:absolute;background:var(--surface);padding:13px 16px;border-radius:18px;font-weight:950;box-shadow:0 15px 35px #0002}
+.f1{top:30px;left:25px}.f2{top:140px;right:24px}.f3{bottom:30px;left:38px}
+
+/* SECTIONS */
+.section{padding:95px 0}
+.heading{display:flex;align-items:end;justify-content:space-between;gap:35px;margin-bottom:34px}
+.heading h2{font:600 clamp(44px,5vw,70px)/.9 "Playfair Display",serif;letter-spacing:-.065em;margin:12px 0 0}
+.heading p{max-width:440px;color:var(--muted);line-height:1.65}
+
+.cat-strip{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin-top:18px}
+.cat-chip{padding:16px 12px;border:1px solid var(--line);border-radius:18px;background:var(--surface);text-align:center;font-weight:700;font-size:13px;cursor:pointer}
+.cat-chip:hover,.cat-chip.active{background:var(--accent);color:var(--bg);border-color:var(--accent)}
+
+.custom-banner{margin:15px 0 35px;padding:26px 28px;border-radius:26px;background:var(--text);color:var(--bg);display:flex;justify-content:space-between;align-items:center;gap:20px}
+.custom-banner h3{margin:0 0 6px;font:600 28px "Playfair Display",serif}
+.custom-banner p{margin:0;color:var(--muted);font-size:13px}
+
+.products{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.product{background:var(--surface);border:1px solid var(--line);border-radius:28px;overflow:hidden;transition:.25s}
+.product:hover{transform:translateY(-6px);box-shadow:var(--shadow)}
+.productart{height:230px;background:var(--soft);display:grid;place-items:center;position:relative}
+.productart:before{content:"";position:absolute;width:150px;height:150px;border-radius:38px;background:var(--accent2);opacity:.42;transform:rotate(16deg)}
+.producticon{position:relative;width:122px;height:122px;border-radius:31px;background:var(--surface);display:grid;place-items:center;font-size:40px;box-shadow:0 18px 38px #0002;overflow:hidden}
+.mascotMini img{width:145%;height:145%;object-fit:cover;object-position:center}
+.productbody{padding:20px}
+.productbody h3{margin:0 0 7px;font-size:19px}
+.productbody p{margin:0;color:var(--muted);font-size:13px;line-height:1.55}
+.price{font-weight:1000;margin-top:14px}
+.card-actions{display:flex;gap:8px;margin-top:13px}
+.smallbtn{flex:1;border:1px solid var(--line);border-radius:12px;background:var(--surface);padding:10px 8px;font-size:12px;font-weight:700;cursor:pointer}
+.smallbtn.primary{background:var(--text);color:var(--bg);border-color:var(--text)}
+
+.moods{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.mood{background:var(--surface);border:1px solid var(--line);border-radius:36px;padding:42px;min-height:315px}
+.mood h3{font-size:40px;letter-spacing:-.06em;margin:0 0 10px}
+.mood p{color:var(--muted);line-height:1.65}
+.tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:22px}
+.tag{padding:9px 13px;border-radius:99px;background:var(--soft);font-size:12px;font-weight:900}
+
+.custom{
+  background:var(--text);color:var(--bg);border-radius:42px;padding:58px;
+  display:grid;grid-template-columns:1fr .78fr;gap:50px;align-items:center
+}
+.custom h2{font-size:clamp(44px,5vw,70px);line-height:.88;letter-spacing:-.065em;margin:16px 0}
+.custom p{color:var(--muted);max-width:540px;line-height:1.65}
+.form{background:var(--surface);color:var(--text);border-radius:28px;padding:25px}
+.form label{font-size:11px;font-weight:1000}
+.form input,.form select,.form textarea{
+  width:100%;padding:13px;margin:7px 0 14px;border-radius:12px;
+  border:1px solid var(--line);background:var(--soft);color:var(--text);outline:none
+}
+.form textarea{min-height:100px;resize:vertical}
+
+.storybox{
+  border:1px solid var(--line);background:var(--surface);border-radius:38px;padding:50px;
+  display:flex;justify-content:space-between;gap:40px;align-items:center
+}
+.storybox h2{font-size:clamp(42px,5vw,65px);line-height:.9;letter-spacing:-.06em;margin:12px 0}
+.storybox p{max-width:520px;color:var(--muted);line-height:1.7}
+
+footer{padding:65px 0;border-top:1px solid var(--line);color:var(--muted)}
+.footer{display:flex;justify-content:space-between;gap:30px}
+
+/* MODAL */
+.modal{position:fixed;inset:0;background:rgba(25,17,34,.55);display:none;align-items:center;justify-content:center;z-index:100;padding:18px}
+.modal.show{display:flex}
+.modal-box{background:var(--surface);border-radius:26px;width:min(620px,100%);max-height:90vh;overflow:auto;padding:26px;box-shadow:0 30px 90px rgba(0,0,0,.25)}
+.modal-head{display:flex;justify-content:space-between;align-items:center}
+.close{border:0;background:var(--soft);border-radius:50%;width:38px;height:38px;cursor:pointer;font-size:20px}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:18px}
+.field{display:flex;flex-direction:column;gap:6px}
+.field.full{grid-column:1/-1}
+.field label{font-size:12px;font-weight:700}
+
+/* ADMIN */
+.admin-panel{display:none}
+.admin-panel.show{display:block}
+.admin-wrap{max-width:1250px;margin:auto;padding:40px 24px}
+.admin-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px}
+.admin-table{width:100%;border-collapse:collapse}
+.admin-table th,.admin-table td{padding:12px;border-bottom:1px solid var(--line);text-align:left;font-size:12px}
+.admin-table img{width:55px;height:55px;object-fit:cover;border-radius:10px}
+.admin-login{max-width:420px;margin:80px auto;padding:30px;border:1px solid var(--line);border-radius:26px;box-shadow:var(--shadow)}
+
+#toast{position:fixed;right:22px;bottom:22px;background:var(--text);color:var(--bg);padding:13px 16px;border-radius:14px;display:none;z-index:200;font-size:13px}
+
+@media(max-width:900px){
+  .navlinks{display:none}.hero{grid-template-columns:1fr;padding-top:55px}.heroart{height:440px}
+  .products{grid-template-columns:1fr 1fr}.custom{grid-template-columns:1fr}.storybox{flex-direction:column;align-items:flex-start}
+  .cat-strip{grid-template-columns:repeat(3,1fr)}.custom-banner{display:block}.custom-banner .btn{margin-top:16px}
+}
+@media(max-width:560px){
+  .hero{min-height:auto}.heroart{height:390px}.bot{width:185px;height:185px}.face{transform:scale(.8)}
+  .products,.moods{grid-template-columns:1fr}.section{padding:68px 0}.custom,.storybox{padding:30px}
+  .footer{flex-direction:column}.cat-strip{grid-template-columns:repeat(2,1fr)}.form-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+
+<body>
+<nav>
+  <div class="wrap navinner">
+    <a class="logo" href="#" onclick="showStore();return false;">ENSHRINE<span>.</span></a>
+    <div class="navlinks">
+      <a href="#shop">Shop</a>
+      <a href="#custom">Customise</a>
+      <a href="#about">Our World</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <div style="display:flex;gap:12px;align-items:center">
+      <button class="theme" id="themeBtn" title="Switch between pastel pink and pastel blue themes">
+        <span id="modeText">HER</span>
+        <span class="switch"><i></i></span>
+      </button>
+      <button class="theme" onclick="openAdmin()" style="border:none;background:transparent;padding:5px" title="Admin">♙</button>
+    </div>
+  </div>
+</nav>
+
+<main id="store">
+<section class="hero wrap">
+  <div>
+    <span class="badge" id="eyebrow">THE ENSHRINE STORE</span>
+    <h1 id="heroTitle">Gifts that feel <em>personal.</em></h1>
+    <p id="heroText">
+      A curated world of personalised lamps, tiny tech, 3D printed desk pieces, memory frames and objects made to say what words sometimes can't.
+    </p>
+    <div class="actions">
+      <a class="btn primary" id="heroBtn" href="#shop">Explore the store ↗</a>
+      <button class="btn secondary" onclick="openCustom('General Customisation')">Create something yours</button>
+    </div>
+  </div>
+
+  <div class="heroart">
+    <div class="glow"></div><div class="glow2"></div>
+    <img class="mascotSheet" src="assets/mascot-happy.png" alt="Enshrine mascot" onerror="this.style.display='none'">
+    <div class="bot">
+      <div class="face">
+        <div class="eye"></div>
+        <div class="eye"></div>
+        <div class="smile"></div>
+      </div>
+    </div>
+    <div class="float f1" id="float1">♡ pretty things</div>
+    <div class="float f2" id="float2">tiny tech ✦</div>
+    <div class="float f3" id="float3">made personal</div>
+  </div>
+</section>
+
+<section class="section wrap" id="shop">
+  <div class="heading">
+    <div><span class="badge">the collection</span><h2 id="shopTitle">Find your kind of thing.</h2></div>
+    <p id="shopText">Start with a custom piece or browse our ready-to-gift designs. No customer account needed.</p>
+  </div>
+  <div class="cat-strip" id="catStrip"></div>
+  <div class="custom-banner" id="custom">
+    <div><h3>Make it yours.</h3><p>Photo • Name • Quote • Memory • Character • Idea</p></div>
+    <button class="btn primary" onclick="openCustom('General Customisation')">Start a custom order →</button>
+  </div>
+  <div id="productSections"></div>
+</section>
+
+<section class="section wrap" id="about">
+  <div class="storybox">
+    <div><span class="badge">why ENSHRINE</span><h2 id="storyTitle">A little store for things worth keeping.</h2></div>
+    <p id="storyText">We make cute, clever and personal objects for desks, rooms, bags and the people you love. Some are ready-made. Some begin with your photo or idea. Everything is made to feel like it belongs to you.</p>
+  </div>
+</section>
+</main>
+
+<section class="admin-panel" id="admin">
+<div class="admin-wrap">
+  <div id="loginView" class="admin-login">
+    <span class="badge">PRIVATE AREA</span>
+    <h2>Store Admin</h2>
+    <p style="color:var(--muted);font-size:13px">Add, edit or remove products from this browser.</p>
+    <div class="field" style="margin-top:16px"><label>Email</label><input id="adminEmail" type="email" placeholder="admin@gmail.com"></div>
+    <div class="field" style="margin-top:12px"><label>Password</label><input id="adminPass" type="password" placeholder="••••••••"></div>
+    <button class="btn primary" style="width:100%;margin-top:16px" onclick="login()">Login</button>
+    <p style="font-size:11px;color:var(--muted);margin-top:12px">Demo credentials are stored in the front-end. For production, replace with secure server-side authentication.</p>
+  </div>
+  <div id="dashboard" style="display:none">
+    <div class="admin-top"><div><span class="badge">CONTROL ROOM</span><h2>Product Manager</h2></div><div><button class="btn secondary" onclick="showStore()">← Store</button> <button class="btn primary" onclick="logout()">Logout</button></div></div>
+    <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:18px"><button class="btn primary" onclick="openProductEditor()">+ Add product</button><button class="btn secondary" onclick="resetProducts()">Reset demo products</button></div>
+    <div style="overflow:auto"><table class="admin-table"><thead><tr><th>Image</th><th>Product</th><th>Category</th><th>Price</th><th>Actions</th></tr></thead><tbody id="adminRows"></tbody></table></div>
+  </div>
+</div>
+</section>
+
+<footer id="contact">
+  <div class="wrap footer">
+    <div><div class="logo">ENSHRINE<span>.</span></div>Little things. Big vibes.</div>
+    <div>Instagram · WhatsApp · Email<br>© 2026 ENSHRINE Studio</div>
+  </div>
+</footer>
+
+<div class="modal" id="customModal"><div class="modal-box">
+  <div class="modal-head"><div><span class="badge">CUSTOM ORDER</span><h2 id="customTitle">Make it yours</h2></div><button class="close" onclick="closeModal('customModal')">×</button></div>
+  <p style="color:var(--muted);font-size:13px">Share the idea. You don't need to create an account.</p>
+  <div class="form-grid">
+    <div class="field"><label>Your name</label><input id="cName" placeholder="Your name"></div>
+    <div class="field"><label>Phone / WhatsApp</label><input id="cPhone" placeholder="+91 ..."></div>
+    <div class="field full"><label>What would you like?</label><input id="cProduct" placeholder="e.g. personalised moon lamp"></div>
+    <div class="field full"><label>Details</label><textarea id="cDetails" placeholder="Photo, name, quote, colour, size, reference idea..."></textarea></div>
+  </div>
+  <button class="btn primary" style="width:100%;margin-top:16px" onclick="sendCustom()">Send to Enshrine team →</button>
+</div></div>
+
+<div class="modal" id="productModal"><div class="modal-box">
+  <div class="modal-head"><div><span class="badge">PRODUCT</span><h2 id="pmTitle"></h2></div><button class="close" onclick="closeModal('productModal')">×</button></div>
+  <img id="pmImg" style="width:100%;max-height:330px;object-fit:contain;background:var(--soft);border-radius:18px;margin:12px 0" alt="">
+  <p id="pmDesc" style="color:var(--muted);line-height:1.7"></p><div id="pmPrice" style="font-weight:800;font-size:20px;margin:12px 0"></div>
+  <button class="btn primary" style="width:100%" onclick="productToCustom()">Customise / enquire about this →</button>
+</div></div>
+
+<div id="toast"></div>
+
+<script>
+const DEMO_PRODUCTS = [
+  {"id": "lamp-custom", "cat": "Lamps", "sub": "Personalised Lamps", "name": "Design Your Own Lamp", "desc": "Turn a memory, face, name or idea into a lamp made just for you.", "price": "Custom Quote", "img": "assets/face-lamp.png", "custom": true},
+  {"id": "lamp-face", "cat": "Lamps", "sub": "Personalised Lamps", "name": "Custom Face Memory Lamp", "desc": "Your photo transformed into a warm illuminated keepsake.", "price": "From ₹899", "img": "assets/face-lamp.png", "custom": true},
+  {"id": "lamp-moon", "cat": "Lamps", "sub": "Personalised Moon Lamps", "name": "Personalised Moon Lamp", "desc": "A moon lamp printed with your photo, message or date.", "price": "From ₹799", "img": "assets/lamp-character.png", "custom": true},
+  {"id": "lamp-flower", "cat": "Lamps", "sub": "Stock Design Lamps", "name": "Lily Glow Table Lamp", "desc": "A sculptural floral lamp designed for a calm desk or bedside corner.", "price": "From ₹699", "img": "assets/lamp-flower.png"},
+  {"id": "lamp-character", "cat": "Lamps", "sub": "Stock Design Lamps", "name": "Character Mood Lamp", "desc": "A playful sculptural lamp that doubles as desk decor.", "price": "From ₹649", "img": "assets/lamp-character.png"},
+  {"id": "key-custom", "cat": "Keychains", "sub": "Custom Keychains", "name": "Create Your Keychain", "desc": "Your name, character, mini object or idea—turned into a pocket-sized piece.", "price": "Custom Quote", "img": "assets/pink-keychain.png", "custom": true},
+  {"id": "key-oled", "cat": "Keychains", "sub": "OLED Keychains", "name": "OLED Expression Keychain", "desc": "A tiny electronic keychain with changing expressions and animations.", "price": "From ₹499", "img": "assets/robot-sprue.png"},
+  {"id": "key-stock", "cat": "Keychains", "sub": "Stock Keychains", "name": "Mini Robot Keychain", "desc": "A small 3D printed robot collectible for your keys or bag.", "price": "From ₹199", "img": "assets/pink-keychain.png"},
+  {"id": "frame-custom", "cat": "Frames", "sub": "Custom Frames", "name": "Personalised Memory Frame", "desc": "Your photo, name or quote displayed in a decorative frame.", "price": "From ₹599", "img": "assets/face-lamp.png", "custom": true},
+  {"id": "frame-stock", "cat": "Frames", "sub": "Stock Frames", "name": "Minimalist Display Frame", "desc": "A clean frame for photos, art or small keepsakes.", "price": "From ₹349", "img": "assets/lamp-character.png"},
+  {"id": "stand-custom", "cat": "Stands & Holders", "sub": "Custom Stands", "name": "Custom Phone Stand", "desc": "Your design, name or character as a phone or device stand.", "price": "Custom Quote", "img": "assets/robot-sprue.png", "custom": true},
+  {"id": "stand-stock", "cat": "Stands & Holders", "sub": "Stock Stands", "name": "Minimal Desk Stand", "desc": "A simple, elegant stand for phones or small displays.", "price": "From ₹299", "img": "assets/lamp-flower.png"},
+  {"id": "oled-custom", "cat": "OLED & Electronics", "sub": "Custom OLED", "name": "Custom OLED Badge", "desc": "Your name, animation or design on a tiny OLED screen.", "price": "From ₹499", "img": "assets/robot-sprue.png", "custom": true},
+  {"id": "oled-stock", "cat": "OLED & Electronics", "sub": "Stock OLED", "name": "Expression Mini Display", "desc": "A small OLED display with pre-loaded animations.", "price": "From ₹399", "img": "assets/robot-sprue.png"},
+  {"id": "decor-custom", "cat": "3D Printed Decor", "sub": "Custom Decor", "name": "Custom Desk Decor", "desc": "Your idea turned into a 3D printed desk piece.", "price": "Custom Quote", "img": "assets/lamp-character.png", "custom": true},
+  {"id": "decor-stock", "cat": "3D Printed Decor", "sub": "Stock Decor", "name": "Geometric Vase", "desc": "A modern 3D printed vase for small plants or decor.", "price": "From ₹449", "img": "assets/lamp-flower.png"}
+];
+
+const CATS = ["Lamps","Keychains","Frames","Stands & Holders","OLED & Electronics","3D Printed Decor"];
+let products = JSON.parse(localStorage.getItem("enshrineProducts") || "null") || DEMO_PRODUCTS;
+let selectedProduct = null;
+let current = "female";
+
+function esc(s){return String(s??"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#039;"}[m]));}
+function save(){localStorage.setItem("enshrineProducts",JSON.stringify(products)); renderStore(); renderAdmin();}
+
+function renderStore(){
+  const strip=document.getElementById("catStrip");
+  strip.innerHTML=`<button class="cat-chip active" onclick="filterCat('all',this)">All</button>`+CATS.map(c=>`<button class="cat-chip" onclick="filterCat('${esc(c)}',this)">${esc(c)}</button>`).join("");
+  renderSections("all");
+}
+
+function renderSections(filter){
+  const root=document.getElementById("productSections"); root.innerHTML="";
+  const cats=filter==="all"?CATS:[filter];
+  cats.forEach(cat=>{
+    const list=products.filter(p=>p.cat===cat);
+    if(!list.length)return;
+    const sec=document.createElement("div"); sec.className="section"; sec.style.padding="28px 0";
+    sec.innerHTML=`<div class="heading"><div><span class="badge">${esc(cat)}</span><h2>${esc(cat)}</h2></div><p>${cat==="Lamps"?"Personalised and ready-to-gift lighting for rooms, desks and bedside corners.":cat==="Keychains"?"Tiny objects with personality, including OLED pieces.":cat==="Frames"?"Memories and artwork turned into display pieces.":cat==="Stands & Holders"?"Useful desk objects that are designed to look good.":cat==="OLED & Electronics"?"Tiny interactive tech made to live on your desk or bag.":"3D printed decor, vases and collectible objects."}</p></div><div class="products">${list.map(card).join("")}</div>`;
+    root.appendChild(sec);
+  });
+}
+
+function card(p){
+  return `<article class="product"><div class="productart"><div class="producticon mascotMini"><img src="${esc(p.img)}" alt="${esc(p.name)}" onerror="this.parentElement.textContent='${esc(p.name.charAt(0))}'"></div></div><div class="productbody"><h3>${esc(p.name)}</h3><p>${esc(p.desc)}</p><div class="price">${esc(p.price)}</div><div class="card-actions"><button class="smallbtn" onclick="viewProduct('${p.id}')">View</button><button class="smallbtn primary" onclick="openCustom('${esc(p.name)}')">${p.custom?"Customise":"Enquire"}</button></div></div></article>`;
+}
+
+function filterCat(cat,btn){document.querySelectorAll(".cat-chip").forEach(x=>x.classList.remove("active"));btn.classList.add("active");renderSections(cat);document.getElementById("productSections").scrollIntoView({behavior:"smooth",block:"start"});}
+
+function viewProduct(id){selectedProduct=products.find(p=>p.id===id);if(!selectedProduct)return;document.getElementById("pmTitle").textContent=selectedProduct.name;document.getElementById("pmImg").src=selectedProduct.img;document.getElementById("pmDesc").textContent=selectedProduct.desc;document.getElementById("pmPrice").textContent=selectedProduct.price;document.getElementById("productModal").classList.add("show");}
+
+function productToCustom(){closeModal("productModal");openCustom(selectedProduct?selectedProduct.name:"Product enquiry");}
+
+function openCustom(title){document.getElementById("customTitle").textContent=title==="General Customisation"?"Make it yours":title;document.getElementById("cProduct").value=title==="General Customisation"?"":title;document.getElementById("customModal").classList.add("show");}
+
+function closeModal(id){document.getElementById(id).classList.remove("show");}
+
+function sendCustom(){
+  const name=document.getElementById("cName").value.trim(), phone=document.getElementById("cPhone").value.trim(), product=document.getElementById("cProduct").value.trim(), details=document.getElementById("cDetails").value.trim();
+  const msg=`Hello Enshrine Store!%0A%0AI want to enquire about: ${encodeURIComponent(product||"a custom product")}%0AName: ${encodeURIComponent(name||"Not provided")}%0APhone: ${encodeURIComponent(phone||"Not provided")}%0ADetails: ${encodeURIComponent(details||"Not provided")}`;
+  const num=localStorage.getItem("enshrineWhatsApp")||"919999999999";
+  window.open(`https://wa.me/${num}?text=${msg}`,"_blank");
+  showToast("Opening WhatsApp with your enquiry…");
+}
+
+function showStore(){document.getElementById("store").style.display="block";document.getElementById("admin").classList.remove("show");document.querySelector("footer").style.display="block";window.scrollTo(0,0);}
+
+function openAdmin(){document.getElementById("store").style.display="none";document.querySelector("footer").style.display="none";document.getElementById("admin").classList.add("show");window.scrollTo(0,0);}
+
+function login(){if(document.getElementById("adminEmail").value==="admin@gmail.com"&&document.getElementById("adminPass").value==="123admin"){sessionStorage.setItem("enshrineAdmin","1");document.getElementById("loginView").style.display="none";document.getElementById("dashboard").style.display="block";renderAdmin();}else showToast("Incorrect admin credentials");}
+
+function logout(){sessionStorage.removeItem("enshrineAdmin");document.getElementById("dashboard").style.display="none";document.getElementById("loginView").style.display="block";showStore();}
+
+function renderAdmin(){const r=document.getElementById("adminRows");if(!r)return;r.innerHTML=products.map(p=>`<tr><td><img src="${esc(p.img)}"></td><td><b>${esc(p.name)}</b><br><span style="color:var(--muted)">${esc(p.sub)}</span></td><td>${esc(p.cat)}</td><td>${esc(p.price)}</td><td><button class="smallbtn" onclick="openProductEditor('${p.id}')">Edit</button> <button class="smallbtn" onclick="removeProduct('${p.id}')">Delete</button></td></tr>`).join("");}
+
+function openProductEditor(id){
+  const p=id?products.find(x=>x.id===id):{id:"p-"+Date.now(),cat:"Lamps",sub:"Stock Design Lamps",name:"New Product",desc:"",price:"From ₹",img:"assets/mascot-gift.png",custom:false};
+  const newId=p.id;
+  const form=`<div class="modal show" id="editTemp"><div class="modal-box"><div class="modal-head"><h2>${id?"Edit":"Add"} product</h2><button class="close" onclick="document.getElementById('editTemp').remove()">×</button></div><div class="form-grid">
+   <div class="field full"><label>Name</label><input id="eName" value="${esc(p.name)}"></div>
+   <div class="field"><label>Category</label><select id="eCat">${CATS.map(c=>`<option ${c===p.cat?"selected":""}>${c}</option>`).join("")}</select></div>
+   <div class="field"><label>Sub-category</label><input id="eSub" value="${esc(p.sub)}"></div>
+   <div class="field"><label>Price label</label><input id="ePrice" value="${esc(p.price)}"></div>
+   <div class="field"><label>Image path</label><input id="eImg" value="${esc(p.img)}"></div>
+   <div class="field full"><label>Description</label><textarea id="eDesc">${esc(p.desc)}</textarea></div>
+   <div class="field"><label><input type="checkbox" id="eCustom" ${p.custom?"checked":""}> Customisable</label></div>
+   </div><button class="btn primary" style="width:100%;margin-top:16px" onclick="saveEditor('${newId}')">Save product</button></div></div>`;
+  document.body.insertAdjacentHTML("beforeend",form);
+}
+
+function saveEditor(id){
+  const obj={id,cat:document.getElementById("eCat").value,sub:document.getElementById("eSub").value,name:document.getElementById("eName").value,desc:document.getElementById("eDesc").value,price:document.getElementById("ePrice").value,img:document.getElementById("eImg").value,custom:document.getElementById("eCustom").checked};
+  const idx=products.findIndex(x=>x.id===id); if(idx>=0)products[idx]=obj;else products.push(obj); localStorage.setItem("enshrineProducts",JSON.stringify(products));document.getElementById("editTemp").remove();renderStore();renderAdmin();showToast("Product saved");
+}
+
+function removeProduct(id){if(!confirm("Remove this product?"))return;products=products.filter(p=>p.id!==id);save();showToast("Product removed");}
+
+function resetProducts(){if(!confirm("Reset all products to the demo catalog?"))return;products=JSON.parse(JSON.stringify(DEMO_PRODUCTS));save();showToast("Demo catalog restored");}
+
+function showToast(t){const el=document.getElementById("toast");el.textContent=t;el.style.display="block";setTimeout(()=>el.style.display="none",2600);}
+
+document.getElementById("themeBtn").onclick=()=>{
+  current=current==="female"?"male":"female";
+  document.body.classList.toggle("male",current==="male");
+  document.getElementById("modeText").textContent=current==="female"?"HER":"HIM";
+};
+
+if(sessionStorage.getItem("enshrineAdmin")==="1"){document.getElementById("loginView").style.display="none";document.getElementById("dashboard").style.display="block";}
+renderStore();renderAdmin();
+</script>
+</body>
+</html>

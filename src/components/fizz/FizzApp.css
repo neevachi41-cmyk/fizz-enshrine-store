@@ -1,0 +1,592 @@
+.fizz-app :root {
+  --bg: #fbf8ff;
+  --surface: #ffffff;
+  --soft: #eee7ff;
+  --text: #2b1d3d;
+  --muted: #776b86;
+  --accent: #8b5cf6;
+  --accent2: #cbb7ff;
+  --line: #e5dcf3;
+  --shadow: 0 24px 70px rgba(92, 54, 140, 0.15);
+}
+
+.fizz-app.male {
+  --bg: #f5f0ff;
+  --surface: #ffffff;
+  --soft: #e6dcff;
+  --text: #2f2148;
+  --muted: #75658c;
+  --accent: #7c3aed;
+  --accent2: #bda5ff;
+  --line: #ddd0f0;
+  --shadow: 0 24px 70px rgba(86, 49, 137, 0.16);
+}
+
+.fizz-app {
+  background: var(--bg);
+  color: var(--text);
+  font-family: Inter, Arial, sans-serif;
+  transition: background 0.5s, color 0.5s;
+  min-height: 100vh;
+}
+
+.fizz-app a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.fizz-app button,
+.fizz-app input,
+.fizz-app select {
+  font: inherit;
+}
+
+.fizz-app .wrap {
+  width: min(1180px, 92%);
+  margin: auto;
+}
+
+/* NAV */
+.fizz-app nav {
+  height: 80px;
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  border-bottom: 1px solid var(--line);
+  background: color-mix(in srgb, var(--bg) 86%, transparent);
+  backdrop-filter: blur(18px);
+}
+
+.fizz-app .navinner {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.fizz-app .logo {
+  font-size: 32px;
+  font-weight: 1000;
+  letter-spacing: -0.09em;
+}
+
+.fizz-app .logo span {
+  color: var(--accent);
+}
+
+.fizz-app .navlinks {
+  display: flex;
+  gap: 28px;
+  color: var(--muted);
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.fizz-app .theme {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  color: var(--text);
+  border-radius: 999px;
+  padding: 7px 12px;
+  cursor: pointer;
+  font-weight: 900;
+}
+
+.fizz-app .switch {
+  width: 42px;
+  height: 23px;
+  border-radius: 99px;
+  background: var(--accent2);
+  padding: 3px;
+}
+
+.fizz-app .switch i {
+  display: block;
+  width: 17px;
+  height: 17px;
+  border-radius: 50%;
+  background: white;
+  transition: 0.35s;
+}
+
+.fizz-app.male .switch i {
+  transform: translateX(19px);
+}
+
+/* HERO */
+.fizz-app .hero {
+  min-height: 720px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 55px;
+  align-items: center;
+  padding: 75px 0;
+}
+
+.fizz-app .badge {
+  display: inline-block;
+  padding: 8px 13px;
+  border-radius: 99px;
+  background: var(--soft);
+  color: var(--accent);
+  font-size: 11px;
+  font-weight: 1000;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
+.fizz-app h1 {
+  font-size: clamp(64px, 8vw, 112px);
+  line-height: 0.83;
+  letter-spacing: -0.08em;
+  margin: 22px 0;
+}
+
+.fizz-app .hero p {
+  max-width: 560px;
+  font-size: 18px;
+  line-height: 1.65;
+  color: var(--muted);
+}
+
+.fizz-app .actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 30px;
+}
+
+.fizz-app .btn {
+  border: 0;
+  border-radius: 99px;
+  padding: 15px 22px;
+  font-weight: 950;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.fizz-app .btn:hover {
+  transform: translateY(-3px);
+}
+
+.fizz-app .primary {
+  background: var(--text);
+  color: var(--bg);
+}
+
+.fizz-app .secondary {
+  background: var(--surface);
+  color: var(--text);
+  border: 1px solid var(--line);
+}
+
+.fizz-app .heroart {
+  height: 540px;
+  border-radius: 48px;
+  background: var(--soft);
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+
+.fizz-app .glow {
+  position: absolute;
+  width: 460px;
+  height: 460px;
+  border-radius: 50%;
+  background: var(--accent2);
+  opacity: 0.48;
+  left: 45px;
+  top: 45px;
+}
+
+.fizz-app .glow2 {
+  position: absolute;
+  width: 250px;
+  height: 250px;
+  border-radius: 45%;
+  background: var(--accent);
+  opacity: 0.38;
+  right: 0;
+  bottom: 0;
+  transform: rotate(25deg);
+}
+
+.fizz-app .mascotSheet {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 92%;
+  height: 92%;
+  object-fit: contain;
+  z-index: 3;
+  filter: drop-shadow(0 25px 35px rgba(50, 70, 90, 0.15));
+  transition: transform 0.5s ease, filter 0.5s ease;
+}
+
+.fizz-app .heroart:hover .mascotSheet {
+  transform: translate(-50%, -50%) scale(1.025);
+}
+
+.fizz-app .bot {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 235px;
+  height: 235px;
+  border-radius: 66px;
+  background: var(--surface);
+  box-shadow: 0 35px 75px #0003;
+  display: grid;
+  place-items: center;
+}
+
+.fizz-app .face {
+  width: 148px;
+  height: 72px;
+  border-radius: 25px;
+  background: #111;
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  justify-content: center;
+}
+
+.fizz-app .eye {
+  width: 23px;
+  height: 32px;
+  background: white;
+  border-radius: 8px;
+}
+
+.fizz-app .smile {
+  position: absolute;
+  width: 36px;
+  height: 14px;
+  border-bottom: 4px solid white;
+  border-radius: 0 0 25px 25px;
+  margin-top: 43px;
+}
+
+.fizz-app .float {
+  position: absolute;
+  background: var(--surface);
+  padding: 13px 16px;
+  border-radius: 18px;
+  font-weight: 950;
+  box-shadow: 0 15px 35px #0002;
+}
+
+.fizz-app .f1 {
+  top: 30px;
+  left: 25px;
+}
+
+.fizz-app .f2 {
+  top: 140px;
+  right: 24px;
+}
+
+.fizz-app .f3 {
+  bottom: 30px;
+  left: 38px;
+}
+
+/* SECTIONS */
+.fizz-app .section {
+  padding: 95px 0;
+}
+
+.fizz-app .heading {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 35px;
+  margin-bottom: 34px;
+}
+
+.fizz-app .heading h2 {
+  font-size: clamp(44px, 5vw, 70px);
+  line-height: 0.9;
+  letter-spacing: -0.065em;
+  margin: 12px 0 0;
+}
+
+.fizz-app .heading p {
+  max-width: 440px;
+  color: var(--muted);
+  line-height: 1.65;
+}
+
+.fizz-app .products {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+}
+
+.fizz-app .product {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 28px;
+  overflow: hidden;
+  transition: 0.25s;
+}
+
+.fizz-app .product:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow);
+}
+
+.fizz-app .productart {
+  height: 230px;
+  background: var(--soft);
+  display: grid;
+  place-items: center;
+  position: relative;
+}
+
+.fizz-app .productart:before {
+  content: "";
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  border-radius: 38px;
+  background: var(--accent2);
+  opacity: 0.42;
+  transform: rotate(16deg);
+}
+
+.fizz-app .producticon {
+  position: relative;
+  width: 122px;
+  height: 122px;
+  border-radius: 31px;
+  background: var(--surface);
+  display: grid;
+  place-items: center;
+  font-size: 40px;
+  box-shadow: 0 18px 38px #0002;
+  overflow: hidden;
+}
+
+.fizz-app .mascotMini img {
+  width: 145%;
+  height: 145%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.fizz-app .productbody {
+  padding: 20px;
+}
+
+.fizz-app .productbody h3 {
+  margin: 0 0 7px;
+  font-size: 19px;
+}
+
+.fizz-app .productbody p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+.fizz-app .price {
+  font-weight: 1000;
+  margin-top: 14px;
+}
+
+.fizz-app .moods {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.fizz-app .mood {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 36px;
+  padding: 42px;
+  min-height: 315px;
+}
+
+.fizz-app .mood h3 {
+  font-size: 40px;
+  letter-spacing: -0.06em;
+  margin: 0 0 10px;
+}
+
+.fizz-app .mood p {
+  color: var(--muted);
+  line-height: 1.65;
+}
+
+.fizz-app .tags {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 22px;
+}
+
+.fizz-app .tag {
+  padding: 9px 13px;
+  border-radius: 99px;
+  background: var(--soft);
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.fizz-app .custom {
+  background: var(--text);
+  color: var(--bg);
+  border-radius: 42px;
+  padding: 58px;
+  display: grid;
+  grid-template-columns: 1fr 0.78fr;
+  gap: 50px;
+  align-items: center;
+}
+
+.fizz-app .custom h2 {
+  font-size: clamp(44px, 5vw, 70px);
+  line-height: 0.88;
+  letter-spacing: -0.065em;
+  margin: 16px 0;
+}
+
+.fizz-app .custom p {
+  color: var(--muted);
+  max-width: 540px;
+  line-height: 1.65;
+}
+
+.fizz-app .form {
+  background: var(--surface);
+  color: var(--text);
+  border-radius: 28px;
+  padding: 25px;
+}
+
+.fizz-app .form label {
+  font-size: 11px;
+  font-weight: 1000;
+}
+
+.fizz-app .form input,
+.fizz-app .form select {
+  width: 100%;
+  padding: 13px;
+  margin: 7px 0 14px;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+  background: var(--soft);
+  color: var(--text);
+  outline: none;
+}
+
+.fizz-app .storybox {
+  border: 1px solid var(--line);
+  background: var(--surface);
+  border-radius: 38px;
+  padding: 50px;
+  display: flex;
+  justify-content: space-between;
+  gap: 40px;
+  align-items: center;
+}
+
+.fizz-app .storybox h2 {
+  font-size: clamp(42px, 5vw, 65px);
+  line-height: 0.9;
+  letter-spacing: -0.06em;
+  margin: 12px 0;
+}
+
+.fizz-app .storybox p {
+  max-width: 520px;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.fizz-app footer {
+  padding: 65px 0;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+}
+
+.fizz-app .footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
+}
+
+@media (max-width: 900px) {
+  .fizz-app .navlinks {
+    display: none;
+  }
+
+  .fizz-app .hero {
+    grid-template-columns: 1fr;
+    padding-top: 55px;
+  }
+
+  .fizz-app .heroart {
+    height: 440px;
+  }
+
+  .fizz-app .products {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .fizz-app .custom {
+    grid-template-columns: 1fr;
+  }
+
+  .fizz-app .storybox {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 560px) {
+  .fizz-app .hero {
+    min-height: auto;
+  }
+
+  .fizz-app .heroart {
+    height: 390px;
+  }
+
+  .fizz-app .bot {
+    width: 185px;
+    height: 185px;
+  }
+
+  .fizz-app .face {
+    transform: scale(0.8);
+  }
+
+  .fizz-app .products,
+  .fizz-app .moods {
+    grid-template-columns: 1fr;
+  }
+
+  .fizz-app .section {
+    padding: 68px 0;
+  }
+
+  .fizz-app .custom,
+  .fizz-app .storybox {
+    padding: 30px;
+  }
+
+  .fizz-app .footer {
+    flex-direction: column;
+  }
+}

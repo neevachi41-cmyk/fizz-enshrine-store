@@ -215,9 +215,9 @@
 
 .enshrine-app .section-head {
   display: flex;
-  justify-content: space-between;
-  align-items: end;
-  gap: 20px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
   margin-bottom: 24px;
 }
 
@@ -229,7 +229,7 @@
 .enshrine-app .section-head p {
   color: var(--muted);
   margin: 0;
-  max-width: 480px;
+  max-width: 600px;
   line-height: 1.6;
 }
 
@@ -524,56 +524,6 @@
 
 .enshrine-app #toast.show {
   display: block;
-}
-
-.enshrine-app .admin-panel {
-  display: none;
-}
-
-.enshrine-app .admin-panel.show {
-  display: block;
-}
-
-.enshrine-app .admin-wrap {
-  max-width: 1250px;
-  margin: auto;
-  padding: 40px 24px;
-}
-
-.enshrine-app .admin-top {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 20px;
-}
-
-.enshrine-app .admin-table {
-  width: 100%;
-  border-collapse: collapse;
-}
-
-.enshrine-app .admin-table th,
-.enshrine-app .admin-table td {
-  padding: 12px;
-  border-bottom: 1px solid var(--line);
-  text-align: left;
-  font-size: 12px;
-}
-
-.enshrine-app .admin-table img {
-  width: 55px;
-  height: 55px;
-  object-fit: cover;
-  border-radius: 10px;
-}
-
-.enshrine-app .admin-login {
-  max-width: 420px;
-  margin: 80px auto;
-  padding: 30px;
-  border: 1px solid var(--line);
-  border-radius: 26px;
-  box-shadow: var(--shadow);
 }
 
 .enshrine-app .empty {

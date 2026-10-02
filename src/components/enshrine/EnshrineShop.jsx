@@ -1,18 +1,6 @@
 import React from 'react'
 
 function EnshrineShop({ cats, selectedCat, products, onSelectCat, onOpenCustom, onViewProduct }) {
-  const getCategoryDescription = (cat) => {
-    const descriptions = {
-      "Lamps": "Personalised and ready-to-gift lighting for rooms, desks and bedside corners.",
-      "Keychains": "Tiny objects with personality, including OLED pieces.",
-      "Frames": "Memories and artwork turned into display pieces.",
-      "Stands & Holders": "Useful desk objects that are designed to look good.",
-      "OLED & Electronics": "Tiny interactive tech made to live on your desk or bag.",
-      "3D Printed Decor": "3D printed decor, vases and collectible objects."
-    }
-    return descriptions[cat] || ""
-  }
-
   const renderCard = (product) => (
     <article className="product" key={product.id}>
       <div className="pimg">
@@ -93,7 +81,6 @@ function EnshrineShop({ cats, selectedCat, products, onSelectCat, onOpenCustom, 
                     <span className="eyebrow">{cat}</span>
                     <h2>{cat}</h2>
                   </div>
-                  <p>{getCategoryDescription(cat)}</p>
                 </div>
                 <div className="grid">
                   {list.map(renderCard)}
@@ -108,7 +95,6 @@ function EnshrineShop({ cats, selectedCat, products, onSelectCat, onOpenCustom, 
                 <span className="eyebrow">{selectedCat}</span>
                 <h2>{selectedCat}</h2>
               </div>
-              <p>{getCategoryDescription(selectedCat)}</p>
             </div>
             <div className="grid">
               {products.map(renderCard)}

@@ -60,19 +60,13 @@ const DATA = {
 }
 
 function FizzApp() {
-  const [current, setCurrent] = useState('female')
-
-  const toggleTheme = () => {
-    setCurrent(prev => prev === 'female' ? 'male' : 'female')
-  }
-
-  const data = DATA[current]
+  const data = DATA.female
 
   return (
-    <div className={`fizz-app ${current === 'male' ? 'male' : ''}`}>
-      <FizzNav data={data} onToggleTheme={toggleTheme} />
+    <div className="fizz-app">
+      <FizzNav />
       <main>
-        <FizzHero data={data} />
+        <FizzHero />
         <FizzProducts data={data} />
         <FizzMoods data={data} />
         <FizzCustom data={data} />

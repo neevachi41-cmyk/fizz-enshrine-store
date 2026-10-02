@@ -116,185 +116,110 @@
   transform: translateX(19px);
 }
 
-/* HERO */
-.fizz-app .hero {
-  min-height: 720px;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 55px;
-  align-items: center;
-  padding: 75px 0;
-}
-
-.fizz-app .badge {
-  display: inline-block;
-  padding: 8px 13px;
-  border-radius: 99px;
-  background: var(--soft);
-  color: var(--accent);
-  font-size: 11px;
-  font-weight: 1000;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-}
-
-.fizz-app h1 {
-  font-size: clamp(64px, 8vw, 112px);
-  line-height: 0.83;
-  letter-spacing: -0.08em;
-  margin: 22px 0;
-}
-
-.fizz-app .hero p {
-  max-width: 560px;
-  font-size: 18px;
-  line-height: 1.65;
-  color: var(--muted);
-}
-
-.fizz-app .actions {
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-  margin-top: 30px;
-}
-
-.fizz-app .btn {
-  border: 0;
-  border-radius: 99px;
-  padding: 15px 22px;
-  font-weight: 950;
-  cursor: pointer;
-  transition: 0.2s;
-}
-
-.fizz-app .btn:hover {
-  transform: translateY(-3px);
-}
-
-.fizz-app .primary {
-  background: var(--text);
-  color: var(--bg);
-}
-
-.fizz-app .secondary {
-  background: var(--surface);
-  color: var(--text);
-  border: 1px solid var(--line);
-}
-
-.fizz-app .heroart {
-  height: 540px;
-  border-radius: 48px;
-  background: var(--soft);
+/* HERO CAROUSEL */
+.fizz-app .hero-carousel {
+  width: 100%;
   position: relative;
   overflow: hidden;
-  box-shadow: var(--shadow);
+  background: #fbf8ff;
+  height: 600px;
 }
 
-.fizz-app .glow {
-  position: absolute;
-  width: 460px;
-  height: 460px;
-  border-radius: 50%;
-  background: var(--accent2);
-  opacity: 0.48;
-  left: 45px;
-  top: 45px;
+.fizz-app .carousel-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
 }
 
-.fizz-app .glow2 {
-  position: absolute;
-  width: 250px;
-  height: 250px;
-  border-radius: 45%;
-  background: var(--accent);
-  opacity: 0.38;
-  right: 0;
-  bottom: 0;
-  transform: rotate(25deg);
-}
-
-.fizz-app .mascotSheet {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  width: 92%;
-  height: 92%;
-  object-fit: contain;
-  z-index: 3;
-  filter: drop-shadow(0 25px 35px rgba(50, 70, 90, 0.15));
-  transition: transform 0.5s ease, filter 0.5s ease;
-}
-
-.fizz-app .heroart:hover .mascotSheet {
-  transform: translate(-50%, -50%) scale(1.025);
-}
-
-.fizz-app .bot {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  width: 235px;
-  height: 235px;
-  border-radius: 66px;
-  background: var(--surface);
-  box-shadow: 0 35px 75px #0003;
-  display: grid;
-  place-items: center;
-}
-
-.fizz-app .face {
-  width: 148px;
-  height: 72px;
-  border-radius: 25px;
-  background: #111;
+.fizz-app .carousel-track {
   display: flex;
-  gap: 20px;
+  width: 100%;
+  height: 100%;
+  will-change: transform;
+}
+
+.fizz-app .carousel-slide {
+  flex: 0 0 100%;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.fizz-app .carousel-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  background: var(--soft);
+}
+
+.fizz-app .carousel-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 50px;
+  height: 50px;
+  border: none;
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(8px);
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
   align-items: center;
   justify-content: center;
+  font-size: 28px;
+  color: white;
+  opacity: 0.8;
+  transition: all 0.3s ease;
+  z-index: 20;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 }
 
-.fizz-app .eye {
-  width: 23px;
-  height: 32px;
+.fizz-app .carousel-nav:hover {
+  opacity: 1;
+  background: rgba(255, 255, 255, 0.5);
+  transform: translateY(-50%) scale(1.1);
+}
+
+.fizz-app .carousel-prev {
+  left: 20px;
+}
+
+.fizz-app .carousel-next {
+  right: 20px;
+}
+
+.fizz-app .carousel-indicators {
+  position: absolute;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+  z-index: 20;
+}
+
+.fizz-app .carousel-dot {
+  width: 12px;
+  height: 12px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.4);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 0;
+}
+
+.fizz-app .carousel-dot:hover {
+  background: rgba(0, 0, 0, 0.7);
+}
+
+.fizz-app .carousel-dot.active {
   background: white;
-  border-radius: 8px;
-}
-
-.fizz-app .smile {
-  position: absolute;
-  width: 36px;
-  height: 14px;
-  border-bottom: 4px solid white;
-  border-radius: 0 0 25px 25px;
-  margin-top: 43px;
-}
-
-.fizz-app .float {
-  position: absolute;
-  background: var(--surface);
-  padding: 13px 16px;
-  border-radius: 18px;
-  font-weight: 950;
-  box-shadow: 0 15px 35px #0002;
-}
-
-.fizz-app .f1 {
-  top: 30px;
-  left: 25px;
-}
-
-.fizz-app .f2 {
-  top: 140px;
-  right: 24px;
-}
-
-.fizz-app .f3 {
-  bottom: 30px;
-  left: 38px;
+  transform: scale(1.2);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
 /* SECTIONS */
@@ -531,13 +456,22 @@
     display: none;
   }
 
-  .fizz-app .hero {
-    grid-template-columns: 1fr;
-    padding-top: 55px;
+  .fizz-app .hero-carousel {
+    height: 450px;
   }
 
-  .fizz-app .heroart {
-    height: 440px;
+  .fizz-app .carousel-nav {
+    width: 40px;
+    height: 40px;
+    font-size: 22px;
+  }
+
+  .fizz-app .carousel-prev {
+    left: 12px;
+  }
+
+  .fizz-app .carousel-next {
+    right: 12px;
   }
 
   .fizz-app .products {
@@ -555,21 +489,21 @@
 }
 
 @media (max-width: 560px) {
-  .fizz-app .hero {
-    min-height: auto;
+  .fizz-app .carousel-container {
+    aspect-ratio: 4 / 3;
+    min-height: 280px;
+    max-height: 400px;
   }
 
-  .fizz-app .heroart {
-    height: 390px;
+  .fizz-app .carousel-nav {
+    width: 36px;
+    height: 36px;
+    font-size: 20px;
   }
 
-  .fizz-app .bot {
-    width: 185px;
-    height: 185px;
-  }
-
-  .fizz-app .face {
-    transform: scale(0.8);
+  .fizz-app .carousel-dot {
+    width: 10px;
+    height: 10px;
   }
 
   .fizz-app .products,

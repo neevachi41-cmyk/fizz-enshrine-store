@@ -4,7 +4,6 @@ import EnshrineHero from './EnshrineHero'
 import EnshrineShop from './EnshrineShop'
 import EnshrineAbout from './EnshrineAbout'
 import EnshrineFooter from './EnshrineFooter'
-import EnshrineAdmin from './EnshrineAdmin'
 import EnshrineModals from './EnshrineModals'
 import './EnshrineApp.css'
 
@@ -29,8 +28,6 @@ const CATS = ["Lamps", "Keychains", "Frames", "Stands & Holders", "OLED & Electr
 function EnshrineApp() {
   const [products, setProducts] = useState([])
   const [selectedCat, setSelectedCat] = useState('all')
-  const [isAdmin, setIsAdmin] = useState(false)
-  const [showAdmin, setShowAdmin] = useState(false)
   const [selectedProduct, setSelectedProduct] = useState(null)
   const [showCustomModal, setShowCustomModal] = useState(false)
   const [showProductModal, setShowProductModal] = useState(false)
@@ -38,47 +35,15 @@ function EnshrineApp() {
   const [customTitle, setCustomTitle] = useState('Make it yours')
   const [searchQuery, setSearchQuery] = useState('')
   const [toast, setToast] = useState('')
-  const [editProduct, setEditProduct] = useState(null)
 
   useEffect(() => {
     const stored = localStorage.getItem("enshrineProducts")
     setProducts(stored ? JSON.parse(stored) : DEMO_PRODUCTS)
-    
-    const adminSession = sessionStorage.getItem("enshrineAdmin")
-    if (adminSession === "1") {
-      setIsAdmin(true)
-    }
   }, [])
 
   const saveProducts = (newProducts) => {
     setProducts(newProducts)
     localStorage.setItem("enshrineProducts", JSON.stringify(newProducts))
-  }
-
-  const handleShowStore = () => {
-    setShowAdmin(false)
-    window.scrollTo(0, 0)
-  }
-
-  const handleOpenAdmin = () => {
-    setShowAdmin(true)
-    window.scrollTo(0, 0)
-  }
-
-  const handleLogin = (email, password) => {
-    if (email === "admin@gmail.com" && password === "123admin") {
-      sessionStorage.setItem("enshrineAdmin", "1")
-      setIsAdmin(true)
-      showToast("Logged in successfully")
-    } else {
-      showToast("Incorrect admin credentials")
-    }
-  }
-
-  const handleLogout = () => {
-    sessionStorage.removeItem("enshrineAdmin")
-    setIsAdmin(false)
-    handleShowStore()
   }
 
   const handleOpenCustom = (title) => {
@@ -129,52 +94,6 @@ function EnshrineApp() {
     setSearchQuery(query)
   }
 
-  const handleOpenProductEditor = (id) => {
-    const product = id ? products.find(p => p.id === id) : {
-      id: "p-" + Date.now(),
-      cat: "Lamps",
-      sub: "Stock Design Lamps",
-      name: "New Product",
-      desc: "",
-      price: "From ₹",
-      custom: false
-    }
-    setEditProduct(product)
-  }
-
-  const handleCloseProductEditor = () => {
-    setEditProduct(null)
-  }
-
-  const handleSaveProduct = (product) => {
-    const idx = products.findIndex(p => p.id === product.id)
-    let newProducts
-    if (idx >= 0) {
-      newProducts = [...products]
-      newProducts[idx] = product
-    } else {
-      newProducts = [...products, product]
-    }
-    saveProducts(newProducts)
-    handleCloseProductEditor()
-    showToast("Product saved")
-  }
-
-  const handleRemoveProduct = (id) => {
-    if (confirm("Remove this product?")) {
-      const newProducts = products.filter(p => p.id !== id)
-      saveProducts(newProducts)
-      showToast("Product removed")
-    }
-  }
-
-  const handleResetProducts = () => {
-    if (confirm("Reset all products to the demo catalog?")) {
-      saveProducts(JSON.parse(JSON.stringify(DEMO_PRODUCTS)))
-      showToast("Demo catalog restored")
-    }
-  }
-
   const showToast = (message) => {
     setToast(message)
     setTimeout(() => setToast(''), 2600)
@@ -193,28 +112,10 @@ function EnshrineApp() {
     ).slice(0, 12)
   }
 
-  if (showAdmin) {
-    return (
-      <EnshrineAdmin
-        isAdmin={isAdmin}
-        products={products}
-        onLogin={handleLogin}
-        onLogout={handleLogout}
-        onShowStore={handleShowStore}
-        onOpenProductEditor={handleOpenProductEditor}
-        onRemoveProduct={handleRemoveProduct}
-        onResetProducts={handleResetProducts}
-        editProduct={editProduct}
-        onCloseProductEditor={handleCloseProductEditor}
-        onSaveProduct={handleSaveProduct}
-      />
-    )
-  }
-
   return (
     <div className="enshrine-app">
       <div className="topbar">PERSONALISED OBJECTS • 3D PRINTED DESIGN • TINY TECH • GIFTS WITH A STORY</div>
-      <EnshrineNav onOpenSearch={handleOpenSearch} onOpenAdmin={handleOpenAdmin} />
+      <EnshrineNav onOpenSearch={handleOpenSearch} />
       <main id="store">
         <EnshrineHero onOpenCustom={handleOpenCustom} />
         <EnshrineShop

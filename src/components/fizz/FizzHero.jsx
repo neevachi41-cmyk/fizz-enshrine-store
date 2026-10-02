@@ -75,7 +75,7 @@ function FizzHero() {
         boxShadow: '0 8px 32px rgba(0, 0, 0, 0.1)'
       }}>
         <img 
-          src="/images/logo.png" 
+          src="/images/Enshrine Purple Gift Store Logo.png" 
           alt="The Enshrine Store" 
           style={{ 
             height: '40px', 

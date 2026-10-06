@@ -2,11 +2,11 @@ import React, { useState, useEffect, useRef } from 'react'
 
 function EnshrineHero({ onOpenCustom }) {
   const heroImages = [
-    '/images/hero-1.jpeg',
-    '/images/hero-2.jpeg',
-    '/images/hero-3.jpeg',
-    '/images/hero-4.jpeg',
-    '/images/hero-5.jpeg'
+    '/images/hero-s1.jpeg',
+    '/images/hero-s2.jpeg',
+    '/images/hero-s3.jpeg',
+    '/images/hero-s4.jpeg',
+    '/images/hero-s5.jpeg'
   ]
 
   const [currentSlide, setCurrentSlide] = useState(0)
@@ -54,7 +54,7 @@ function EnshrineHero({ onOpenCustom }) {
       onMouseLeave={handleMouseLeave}
       style={{
         width: '100%',
-        height: '600px',
+        height: '100vh',
         position: 'relative',
         overflow: 'hidden',
         background: '#f8f7ff',

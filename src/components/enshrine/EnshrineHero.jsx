@@ -67,7 +67,7 @@ function EnshrineHero({ onOpenCustom }) {
         top: '24px',
         left: '50%',
         transform: 'translateX(-50%)',
-        zIndex: '30',
+        zIndex: '100',
         background: 'rgba(255, 255, 255, 0.9)',
         backdropFilter: 'blur(10px)',
         borderRadius: '16px',
@@ -145,7 +145,7 @@ function EnshrineHero({ onOpenCustom }) {
             color: 'white',
             opacity: '0.8',
             transition: 'all 0.3s ease',
-            zIndex: '20'
+            zIndex: '100'
           }}
         >
           ‹
@@ -172,7 +172,7 @@ function EnshrineHero({ onOpenCustom }) {
             color: 'white',
             opacity: '0.8',
             transition: 'all 0.3s ease',
-            zIndex: '20'
+            zIndex: '100'
           }}
         >
           ›
@@ -186,7 +186,7 @@ function EnshrineHero({ onOpenCustom }) {
           transform: 'translateX(-50%)',
           display: 'flex',
           gap: '10px',
-          zIndex: '20'
+          zIndex: '100'
         }}>
           {heroImages.map((_, index) => (
             <button

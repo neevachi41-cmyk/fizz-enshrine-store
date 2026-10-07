@@ -6,7 +6,7 @@ function EnshrineNav({ onOpenSearch }) {
       <nav className="nav">
         <a href="#" onClick={(e) => { e.preventDefault(); window.scrollTo(0, 0); }}>
           <img 
-            src="/images/Enshrine Purple Gift Store Logo.png" 
+            src="/images/Enshrine-Logo.png" 
             alt="The Enshrine Store" 
             className="logo"
             style={{ 

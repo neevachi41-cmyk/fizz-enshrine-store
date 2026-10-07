@@ -75,7 +75,7 @@ function EnshrineHero({ onOpenCustom }) {
         boxShadow: '0 8px 32px rgba(0, 0, 0, 0.1)'
       }}>
         <img 
-          src="/images/Enshrine Purple Gift Store Logo.png" 
+          src="/images/Enshrine-Logo.png" 
           alt="The Enshrine Store" 
           style={{ 
             height: '40px', 

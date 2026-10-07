@@ -6,7 +6,7 @@ function FizzNav() {
       <div className="wrap navinner">
         <a className="logo" href="#">
           <img 
-            src="/images/Enshrine Purple Gift Store Logo.png" 
+            src="/images/Enshrine-Logo.png" 
             alt="The Enshrine Store" 
             style={{ 
               height: '54px', 
